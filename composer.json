@@ -1,0 +1,27 @@
+{
+    "name": "healthysmiles/smiletrunk",
+    "autoload": {
+        "psr-4": {
+            "SmileTrunk\\": "app/",
+            "SmileTrunk\\Controllers\\": "app/controllers/",
+            "SmileTrunk\\Models\\": "app/models/",
+            "SmileTrunk\\Services\\": "app/services/",
+            "SmileTrunk\\Repositories\\": "app/repositories/",
+            "SmileTrunk\\Clients\\": "app/clients/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tom Veilleux",
+            "email": "thomas.veilleux.jr@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phalcon/devtools": "~5.0-dev",
+        "phalcon/ide-stubs": "^5.8"
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.9",
+        "webmozart/assert": "^1.11"
+    }
+}
