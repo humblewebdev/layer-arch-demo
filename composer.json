@@ -10,6 +10,11 @@
             "SmileTrunk\\Clients\\": "app/clients/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
     "authors": [
         {
             "name": "Tom Veilleux",
@@ -18,7 +23,9 @@
     ],
     "require-dev": {
         "phalcon/devtools": "~5.0-dev",
-        "phalcon/ide-stubs": "^5.8"
+        "phalcon/ide-stubs": "^5.8",
+        "phpunit/phpunit": "^9.0",
+        "mockery/mockery": "^1.6"
     },
     "require": {
         "guzzlehttp/guzzle": "^7.9",
