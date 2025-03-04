@@ -2,7 +2,9 @@
 
 namespace SmileTrunk\exceptions;
 
-class UnableToGetUsersException extends \Exception
+use Exception;
+
+class UnableToGetUsersException extends Exception
 {
     protected $message = 'Unable to get users';
     public function __construct(\Throwable $previous = null)

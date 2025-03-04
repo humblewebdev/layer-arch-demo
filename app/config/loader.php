@@ -15,5 +15,6 @@ $loader->setNamespaces(
         'SmileTrunk\Clients' => $config->application->clientsDir,
         'SmileTrunk\ValueObjects' => $config->application->valueObjectsDir,
         'SmileTrunk\Exceptions' => $config->application->exceptionsDir,
+        'SmileTrunk\Tasks' => $config->application->tasksDir
     ]
 )->register();

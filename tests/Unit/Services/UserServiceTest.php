@@ -6,20 +6,20 @@ use Mockery;
 use Mockery\LegacyMockInterface;
 use PHPUnit\Framework\TestCase;
 use SmileTrunk\Clients\Mattermost;
-use SmileTrunk\Services\UserService;
+use SmileTrunk\Services\UserRetrievalService;
 use SmileTrunk\ValueObjects\User;
 
 class UserServiceTest extends TestCase
 {
 
     private Mockery\MockInterface|Mattermost $mockeryClientMock;
-    private UserService $service;
+    private UserRetrievalService $service;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->mockeryClientMock = Mockery::mock(Mattermost::class);
-        $this->service = new UserService($this->mockeryClientMock);
+        $this->service = new UserRetrievalService($this->mockeryClientMock);
     }
 
     protected function tearDown(): void

@@ -13,7 +13,7 @@ return new \Phalcon\Config\Config([
         'host'        => 'localhost',
         'username'    => 'root',
         'password'    => '',
-        'dbname'      => 'test',
+        'dbname'      => 'SmileTrunk',
         'charset'     => 'utf8',
     ],
     'application' => [
@@ -26,7 +26,8 @@ return new \Phalcon\Config\Config([
         'libraryDir'     => APP_PATH . '/library/',
         'cacheDir'       => BASE_PATH . '/cache/',
         'servicesDir'    => APP_PATH . '/services/',
-        'repositoriesDir' => APP_PATH . '/repositories/',
+        'repositoriesDir'=> APP_PATH . '/repositories/',
+        'tasksDir'       => APP_PATH . '/tasks/',
         'clientsDir' => APP_PATH . '/clients/',
         'valueObjectsDir' => APP_PATH . '/valueObjects/',
         'exceptionsDir' => APP_PATH . '/exceptions/',

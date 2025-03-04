@@ -29,6 +29,7 @@
     },
     "require": {
         "guzzlehttp/guzzle": "^7.9",
-        "webmozart/assert": "^1.11"
+        "webmozart/assert": "^1.11",
+        "league/fractal": "^0.20.2"
     }
 }

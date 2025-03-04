@@ -5,6 +5,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use SmileTrunk\exceptions\UnableToGetUsersException;
 use SmileTrunk\ValueObjects\User;
+use Webmozart\Assert\InvalidArgumentException;
 
 class Mattermost
 {
@@ -29,7 +30,11 @@ class Mattermost
         );
         $userObjects = [];
         foreach ($users as $user) {
-            $userObjects[] = User::fromObject($user);
+            try {
+                $userObjects[] = User::fromObject($user);
+            } catch (InvalidArgumentException $e) {
+                continue;
+            }
         }
         return $userObjects;
         } catch (GuzzleException $e) {

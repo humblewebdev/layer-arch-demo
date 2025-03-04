@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use GuzzleHttp\Client;
+use League\Fractal\Manager;
 use Phalcon\Html\Escaper;
 use Phalcon\Flash\Direct as Flash;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
@@ -11,9 +12,10 @@ use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Session\Adapter\Stream as SessionAdapter;
 use Phalcon\Session\Manager as SessionManager;
 use Phalcon\Mvc\Url as UrlResolver;
-use Phalcon\Mvc\Dispatcher;
 use SmileTrunk\Clients\Mattermost;
-use SmileTrunk\Services\UserService;
+use SmileTrunk\Services\UserRetrievalService;
+use SmileTrunk\Services\UserCreationSyncService;
+use SmileTrunk\Repositories\UserRepository;
 
 /**
  * Shared configuration service
@@ -152,13 +154,50 @@ $di->set(
 );
 
 $di->set(
-    UserService::class,
+    Manager::class,
+    function() {
+        $manager = new Manager();
+        $manager->setSerializer(new \League\Fractal\Serializer\DataArraySerializer());
+        return $manager;
+    }
+);
+
+$di->set(
+    UserRetrievalService::class,
     [
-        'className' => UserService::class,
+        'className' => UserRetrievalService::class,
+        'arguments' => [
+            [
+                'type' => 'service',
+                'name' => UserRepository::class
+            ],
+            [
+                'type' => 'service',
+                'name' => Manager::class
+            ]
+        ]
+    ]
+);
+
+$di->set(
+    UserRepository::class,
+    [
+        'className' => UserRepository::class
+    ]
+);
+
+$di->set(
+    UserCreationSyncService::class,
+    [
+        'className' => UserCreationSyncService::class,
         'arguments' => [
             [
                 'type' => 'service',
                 'name' => Mattermost::class
+            ],
+            [
+                'type' => 'service',
+                'name' => UserRepository::class
             ]
         ]
     ]
